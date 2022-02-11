@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="JaINTP.QRCodeGen.Modules.UI.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ComboBox}"
+               BasedOn="{StaticResource {x:Type ComboBox}}">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <ItemContainerTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Width="12"
+                                     Height="12"
+                                     Fill="{Binding ColourBrush,
+                                                    Mode=OneWay}"
+                                     Stroke="{Binding BorderColourBrush,
+                                                      Mode=OneWay}"
+                                     StrokeThickness="1" />
+                            <TextBlock Text="{Binding Name}"
+                                       Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </ItemContainerTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width"
+                    Value="100"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Width="40"
+                Height="40"
+                Margin="4"
+                VerticalAlignment="Top"
+                Command="{Binding GoBackCommand}"
+                Style="{DynamicResource MahApps.Styles.Button.Circle}">
+            <iconPacks:PackIconModern Width="20"
+                                      Height="20"
+                                      Kind="ArrowLeft" />
+        </Button>
+
+        <StackPanel Grid.Column="1">
+            <GroupBox Header="Appearance">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Theme"/>
+                    <ComboBox Name="ThemeComboBox"
+                              ItemsSource="{Binding AppThemes,
+                                                    Mode=TwoWay}"
+                              SelectedItem="{Binding SelectedTheme,
+                                                     Mode=TwoWay}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <prism:InvokeCommandAction Command="{Binding ElementName=ThemeComboBox,
+                                                                             Path=SelectedItem.ChangeAccentCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+
+                    <Label Content="Accent"/>
+                    <ComboBox Name="AccentComboBox"
+                              ItemsSource="{Binding AccentColours,
+                                                    Mode=TwoWay}"
+                              SelectedItem="{Binding SelectedAccentColour,
+                                                     Mode=TwoWay}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <prism:InvokeCommandAction Command="{Binding ElementName=AccentComboBox,
+                                                                             Path=SelectedItem.ChangeAccentCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Other">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Maps API Key"/>
+                    <TextBox Text="{Binding MapsApiKey,
+                                            Mode=TwoWay}"
+                             Width="300"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
