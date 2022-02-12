@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
-// Assembly         : QRCodeGen.Modules.UI
+// Assembly         : QRCodeGen.Core
 // Author           : Jai Brown
 // Created          : 24-01-2022
 //
 // Last Modified By : Jai Brown
-// Last Modified On : 30-01-2022
+// Last Modified On : 12-02-2022
 // ***********************************************************************
 // <copyright file="Values.cs" company="Jai Brown">
 //     Copyright (c) Jai Brown. All rights reserved.

@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
-// Assembly         : RegionViewModelBase.Core
+// Assembly         : QRCodeGen.Core
 // Author           : Jai Brown
 // Created          : 18-01-2022
 //
 // Last Modified By : Jai Brown
-// Last Modified On : 18-01-2022
+// Last Modified On : 12-02-2022
 // ***********************************************************************
 // <copyright file="RegionViewModelBase.cs" company="Jai Brown">
 //     Copyright (c) Jai Brown. All rights reserved.
